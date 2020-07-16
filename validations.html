@@ -1,0 +1,184 @@
+
+<html>
+<head>
+
+<title>Untitled Document</title>
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+<style type="text/css">
+	#signup
+	{
+		width:240px; padding:20px;
+		border:4px #000 double;
+		margin:auto;
+		box-shadow:15px 0px 10px #666666;
+		/*display:none;*/
+	}
+	input[type="text"]
+	{border:1px black solid; 
+	padding-left:40px;
+		letter-spacing:5px;
+	 font-size:18px; line-height:30px;
+	 background-image:url(pics/om.gif); 
+	 background-repeat:no-repeat;
+	 background-size:12%;
+	 } 
+	 input[type="password"]
+	 {
+		 	width:240px;
+		 	border:1px black solid; text-align:center;
+			letter-spacing:5px;
+	 		font-size:18px; line-height:30px;
+			color:#FF0000;
+	 } 
+	 input[type="text"]:focus{ background-color:#CCFF33;}
+	 
+	 .btn
+	 {
+		 width:70px; padding:10px; border:2px red solid;
+		 cursor:pointer;
+		 text-align:center;
+		 float:left;
+	 
+	 }
+	 #cross
+	 {
+		 background-image:url(pics/crossBtn.png);
+		
+		 width:30px; height:30px;
+		 float:right;
+		 cursor:pointer;
+	 }
+	 #errUid
+	 {
+		 float:left; 
+	 }
+	 #lblUid
+	 {
+		 float:left; margin-right:10px;
+	 }
+	 
+	 .notOke
+	 	{
+			background-image:url(pics/crossBtn2.png);
+			width:20px; height:20px;
+			background-size:contain;
+			background-repeat:no-repeat;
+		}
+	.Oke
+	 	{
+			background-image:url(pics/ok.png);
+			width:20px; height:20px;
+			background-size:contain;
+			background-repeat:no-repeat;
+		}	
+</style>
+
+
+<script type="text/javascript">
+$(document).ready(
+	function(){ 
+	//$("#btnShow , #btnHide") ho sakta hai.
+		
+			$("#btnShow").click(function(){
+				//document.getElementById("signup").style.display= "block";
+			//$("#signup").slideDown(1000);
+			//$("#signup").show(1000);
+			$("#signup").fadeIn(2000);
+				
+				});
+		//========================================
+		
+		//$("#btnHide").click(doHide);
+		function doHide()
+				{
+				//$("#signup").fadeOut(2000);	
+				//$("#signup").slideUp();
+				$("#signup").hide(2000);
+				
+				} 
+	//========================
+	
+		$("#cross").click(function(){
+					$("#signup").slideUp();
+			});			
+		//===============
+		
+		$("#txtUid").blur(function(){
+			
+				if($("#txtUid").val()=="")
+					//$("#errUid").html("Fill User Name...");
+					{
+						$("#errUid").removeClass("Oke");
+						$("#errUid").addClass("notOke");
+					}
+				else
+					//$("#errUid").html("Okhe....");	
+					$("#errUid").removeClass("notOke").addClass("Oke");
+					
+			
+			});
+			//======================================
+			$("#txtMob").blur(function(){
+				var r=/^[7-9]{1}[0-9]{9}$/;
+				if(r.test($("#txtMob").val())==false)
+					{
+						$(this).css("background-color","#C90");
+					}
+					else
+					{
+						$(this).css("background-color","#6F9");
+						
+					}
+				
+				
+				});	
+			//===============================
+			$("#txtPwd").blur(function(){
+	var r=/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+				if(r.test($(this).val())==false)
+					{
+						$(this).css("background-color","#C90");
+					}
+					else
+					{
+						$(this).css("background-color","#6F9");
+						
+					}
+				
+				
+				});	
+				//==================
+				//var r=/^[a-zA-Z ]*$/; user name
+				//var r=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/   ;  email
+				});
+		
+
+
+
+</script>
+</head>
+
+<body>
+	<div class="btn" id="btnShow" > Signup</div>
+    <div class="btn" id="btnHide" > Close</div>
+    
+	<div id="signup">
+		<table border="0">
+        	<tr><td><div id="cross"></div>
+        	<tr><td><img src="../pics/javaaa.png" width="150" height="100">
+        	<tr><td><div id="lblUid">User Name</div><div id="errUid"></div>
+            <tr><td><input type="text" id="txtUid" />
+            <tr><td>Password
+            <tr><td><input type="password" id="txtPwd" />
+            <tr><td>Mobile
+            <tr><td><input type="text" id="txtMob" />
+            <tr><td align="center">
+            <input type="button" value="Signup" style="padding:15px; background-color:#66FF00" />
+            
+            
+            
+        </table>
+	</div>
+
+</body>
+</html>
